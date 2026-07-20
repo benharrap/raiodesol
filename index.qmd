@@ -1,0 +1,43 @@
+---
+brand: _brand.yml
+toc: false
+format:
+  html:
+    page-layout: custom
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+library(readxl)
+library(dplyr)
+library(stringr)
+library(gt)
+source("make_table.R")
+```
+
+::: {.panel-tabset}
+
+## London School
+
+```{r}
+make_table("london school") |> 
+    tab_footnote(
+      footnote = "Pineapple break is played as triplets",
+      cells_row_groups(groups = "Pineapple Break")
+    ) |>
+    tab_footnote(
+      footnote = "Tickle break starts quietly, builds to crescendo",
+      cells_row_groups(groups = "Tickle Break")
+    )
+```
+
+Mnemonics:
+
+- Pineapple break, "Boom pine-app-le pine-app-le pine-app-le"
+
+## Sambista
+
+:::

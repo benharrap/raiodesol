@@ -1,0 +1,25 @@
+meta:
+  name: Raio de Sol
+  link: https://www.raiodesol.org/
+
+color:
+  palette:
+    red: "#ee3c30"
+    green: "#73be48"
+    yellow: "#fff815"
+    black: "#000000"
+    white: "#ffffff"
+
+typography:
+  fonts:
+    - family: Montserrat
+      source: google
+    - family: Noto Sans Mono
+      source: google
+
+  base: Montserrat
+  headings: 
+    family: Montserrat
+    weight: 600
+  monospace: Noto Sans Mono
+
