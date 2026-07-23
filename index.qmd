@@ -18,19 +18,46 @@ library(gt)
 source("make_table.R")
 ```
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ## London School
 
 ```{r}
 make_table("london school") |> 
+  tab_style(
+      cell_borders(
+        sides = "l",
+        color = "black",
+        weight = px(2)
+      ),
+      locations = cells_body(
+        columns = c(`1e`,`2&`,`3a`),
+        rows = 19
+        )
+    ) |> 
+  tab_style(
+      cell_borders(
+        sides = "l",
+        color =  NULL,
+        weight = NULL
+      ),
+      locations = cells_body(
+        columns = c(`2`,`3`,`4`),
+        rows = 19
+        )
+    ) |> 
     tab_footnote(
       footnote = "Pineapple break is played as triplets",
-      cells_row_groups(groups = "Pineapple Break")
+      locations = cells_body(
+        columns = instrument,
+        rows = 19
+      )
     ) |>
     tab_footnote(
       footnote = "Tickle break starts quietly, builds to crescendo",
-      cells_row_groups(groups = "Tickle Break")
+      locations = cells_body(
+        columns = instrument,
+        rows = 20:21
+      )
     )
 ```
 
@@ -39,5 +66,4 @@ Mnemonics:
 - Pineapple break, "Boom pine-app-le pine-app-le pine-app-le"
 
 ## Sambista
-
 :::

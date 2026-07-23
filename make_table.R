@@ -46,7 +46,8 @@ make_table <- function(sheet) {
     #### Width ####
     # Make the notation narrow relative to the other columns
     cols_width(
-      c(instrument, bar) ~ px(100),
+      c(instrument) ~ px(100),
+      bar ~ px(55),
       search_col ~ px(15),
       everything() ~ px(20)
     ) |>
