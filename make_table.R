@@ -29,17 +29,25 @@ make_table <- function(sheet) {
     # Use empty string for empty cells
     sub_missing(missing_text = "") |>
     # Hide these columns
-    cols_hide(c("row", "search_col")) |>
+    cols_hide(columns = c(row)) |>
     #### Fonts ####
     # Raio font
     opt_table_font(
       size = 14,
       font = google_font("Montserrat")
     ) |>
+    tab_style(
+      style = cell_text(
+        size = px(1),
+        color = "white"
+        ),
+      locations = cells_body(columns = search_col)
+    ) |>
     #### Width ####
     # Make the notation narrow relative to the other columns
     cols_width(
       c(instrument, bar) ~ px(100),
+      search_col ~ px(15),
       everything() ~ px(20)
     ) |>
     # Center align the box notation
@@ -56,7 +64,8 @@ make_table <- function(sheet) {
     cols_label(
       ends_with("e") ~ "e",
       ends_with("&") ~ "&",
-      ends_with("a") ~ "a"
+      ends_with("a") ~ "a",
+      search_col = ""
     ) |>
     # Add a column spanner for each count
     tab_spanner(
@@ -81,7 +90,7 @@ make_table <- function(sheet) {
       cell_borders(
         sides = "l",
         color = "black",
-        weight = px(3)
+        weight = px(2)
       ),
       locations = cells_body(columns = matches("\\d$"))
     ) |>
@@ -90,7 +99,7 @@ make_table <- function(sheet) {
       cell_borders(
         sides = "r",
         color = "black",
-        weight = px(3)
+        weight = px(2)
       ),
       locations = cells_body(columns = matches("4a"))
     ) |>
